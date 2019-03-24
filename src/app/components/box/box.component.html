@@ -1,0 +1,24 @@
+<div class=" text-white   padded">
+    <div class="box">
+        <app-addbox></app-addbox>
+
+        <!-->
+        <hr>
+        <br>
+        <div class="container  " *ngFor="let file of files | async">
+            <div class="card  ">
+                <div class="card-header">
+                    <button type="submit" class="btn btn-danger btn-sm" (click)="removeBox(file.id,file.url)"><i class="fa fa-trash"></i></button>
+                    <div class="btn btn-link btn-dark" [@myAnimation]='state' (click)="file.hide=!file.hide"> <i class="fa fa-eye " *ngIf="file.hide"></i> <i class="fa fa-eye-slash" *ngIf="!file.hide"></i>
+                    </div> Titre: {{ file.title }} Categori:{{file.dep}}
+                </div>
+                <div class="card-header" [hidden]="file.hide">
+                    <a href="{{file.url}}" target="_blank" class="nav-link">telechargé {{this.file.title}} </a>
+                    <pdf-viewer [src]="" [render-text]="true" style="display: block;">test</pdf-viewer>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <-->
+</div>

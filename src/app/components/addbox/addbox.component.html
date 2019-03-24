@@ -1,0 +1,55 @@
+<div class="container" *ngIf="authService.user | async as user">
+    <form #f="ngForm" (submit)="addBox(f)" class="text-center">
+
+        <div class="form-group text-center"> <label><h5>Titre</h5></label>
+            <input type="text" [(ngModel)]="file.title" required name="title" class="form-control" placeholder=" Inserez le titre du fichier ">
+        </div>
+        <!-->
+        <div class="form-group text-center"> <label><h5>Categorie</h5></label>
+            <input type="text" [(ngModel)]="file.category" required name="category" class="form-control" placeholder="Inserez Categorie ">
+        </div>
+        <-->
+            <div class="form-group text-center"> <label><h5>Categorie</h5></label></div>
+            <div class=" form-group input-group mb-3">
+
+                <select class="custom-select from-control" required [(ngModel)]="file.category" name="category">
+          
+          <option value="Management">Management</option>
+          <option value="Etude">Etude</option>
+          <option value="Juridique">Juridique</option>
+          <option value="RH">RH</option>
+          <option value="Achat">Achat</option>
+          <option value="Dynamique Amelioration">Dynamique Amelioration</option>
+          <option value="autre">autre</option>
+        </select>
+            </div>
+            <div class="form-group text-center "> <label><h5>Sous-categorie</h5></label>
+                <div class=" form-group input-group mb-3">
+
+                    <select class="custom-select from-control" rquired [(ngModel)]="file.cat" name="cat">
+              
+              <option value="Processus">Processus</option>
+              <option value="precédures">precédures</option>
+              <option value="formulaire">formulaire</option>
+              <option value="Communication">Communication</option>
+              <option value="Maitrise operationelle">Maitrise operationelle </option>
+              <option value="autre">autre</option>
+            </select>
+                </div>
+            </div>
+
+            <div class="form-group text-center "> <label><h5>Departement</h5></label>
+                <input type="text " [(ngModel)]="file.dep " name="dep " required class="form-control " placeholder="{{user.dep}} par default ">
+            </div>
+
+            <div class="form-group text-center "> <label><h5>Note</h5></label>
+                <input type="text " [(ngModel)]="file.note " name="note " class="form-control " placeholder=" Ajoutez des notes (facultatif) ">
+            </div>
+
+            <div>
+                <input class="form-control-file " name="file " type="file" (change)="uploadFilee($event) ">
+            </div>
+            <button type="submit " [disabled]="!f.valid " class="btn btn-success btn-sm ">Ajouter</button>
+
+    </form>
+</div>

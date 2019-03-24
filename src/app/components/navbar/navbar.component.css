@@ -1,0 +1,30 @@
+    .login {
+        padding: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        text-align: center;
+        color: white;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 99px;
+        z-index: 1;
+    }
+    
+    .dropdown-item {
+        text-decoration: none;
+        text-align: center;
+        display: block;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }

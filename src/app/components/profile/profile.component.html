@@ -1,0 +1,58 @@
+<div class="container " style="color:black" *ngIf="!authService.state">
+    <form class="text-center login " #f="ngForm" (submit)="login(f)">
+        <div class="form-group text-center"> <label><h5>Nom D'utilisateur</h5></label>
+            <input type="email" [(ngModel)]="user.email" required name="email" class="form-control" placeholder="Entrez votre email">
+        </div>
+        <div class="form-group"> <label><h5>Mot De Passe</h5></label>
+            <input type="password" [(ngModel)]="user.mdp" required name="mdp" class="form-control" placeholder="mot de passe">
+        </div>
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
+<div class="container" *ngIf="authService.user | async as user">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-4 col-xs-9 col-sm-6 col-lg-4">
+                <br><img src="{{user.url}}" style="width:200px;height:200px;border:2px;" alt="stack photo" class="img img-responsive">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid white ">
+                    <h2 style="color:white;">bienvenu {{user.prenom}}</h2>
+                </div>
+                <br><br>
+                <ul class="container details">
+                    <li>
+                        <p><span style="width:50px;"></span>Prenom :{{user.prenom}}</p>
+                    </li>
+                    <li>
+                        <p><span style="width:50px;"></span>Nom :{{user.nom}}</p>
+                    </li>
+                    <li>
+                        <p><span style="width:50px;"></span>Email :{{user.email}}</p>
+                    </li>
+                </ul>
+                <div class="container">
+                    <br>
+                    <button class="btn btn-danger btn" *ngIf="!up" (click)="logout() "><i class="fa fa-sign-out"></i>Logout</button>
+                    <button type="submit" *ngIf="!up" class="btn btn-primary btn " (click)="modi($event, user)"><i class="fa fa-pencil"></i> modifier</button>
+                    <form (ngSubmit)="update(user)" *ngIf="up && usermodi.uid == user.uid ">
+
+
+                        <input type="text" [(ngModel)]="user.prenom" #prenom="ngModel" name="prenom" class="form-control" placeholder="Entrez le nouveau prenom">
+                        <hr>
+
+                        <input type="text" [(ngModel)]="user.nom" #nom="ngModel" name="nom" class="form-control" placeholder="Entrez le nouveau nom">
+                        <hr>
+                        <input type="text" [(ngModel)]="user.dep" #dep="ngModel" name="dep" class="form-control" placeholder="entrez son departement"><br>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-success btn " value="Enregistrer">
+                            <button type="submit" (click)="anu()" class="btn btn btn ">Annuler</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+    .padded {
+        padding: 3rem;
+    }
+    
+    .form-group {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+    
+    .card {
+        position: center;
+        background: rgb(34, 34, 34);
+        background: rgba(200, 34, 34, 0.00);
+    }
+    
+    .container {
+        background: rgb(34, 34, 34);
+        background: rgba(34, 34, 34, 0.75);
+    }
+    
+    .box {
+        padding: 80px;
+    }

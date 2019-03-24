@@ -1,0 +1,60 @@
+<div class="container">
+
+
+    <h5 class="text-white">Ici vous trouvez tous les fichiers ! vous devez choisir les categories et les sous categories si desous pour trier les fichier selon vos besoin </h5><br>
+    <hr>
+
+    <div class="nav">
+
+        <div class="btn-group btn-group-lg " data-toggle="buttons">
+
+            <button class="btn btn-light" (click)="cat1=!cat1;cat0=false" type="checkbox" name="cat1"> Management </button>
+            <button class="btn btn-light" (click)="cat2=!cat2;cat0=false" type="checkbox" name="cat2"> Etude</button>
+            <button class="btn btn-light" (click)="cat3=!cat3;cat0=false" type="checkbox" name="cat3"> Juridique</button>
+            <button class="btn btn-light" (click)="cat4=!cat4;cat0=false" type="checkbox" name="cat4"> RH</button>
+            <button class="btn btn-light" (click)="cat5=!cat5;cat0=false" type="checkbox" name="cat5"> Achat</button>
+            <button class="btn btn-light" (click)="cat6=!cat6;cat0=false" type="checkbox" name="cat6"> Dynamique Amelioration</button>
+            <button class="btn btn-light" (click)="cat0=!cat0" type="checkbox" name="cat0"> Tout </button>
+        </div>
+
+
+        <br><br>
+        <div class=" btn-group btn-group-justified btn-group-lg   " data-toggle="buttons">
+            <button class="btn btn-dark" (click)="scat1=!scat1" type="checkbox" name="scat1">Processus</button>
+            <button class="btn btn-dark" (click)="scat2=!scat2" type="checkbox" name="scat2">procédures</button>
+            <button class="btn btn-dark" (click)="scat3=!scat3" type="checkbox" name="scat3">formulaire</button>
+            <button class="btn btn-dark" (click)="scat4=!scat4" type="checkbox" name="scat4">Communication</button>
+            <button class="btn btn-dark" (click)="scat5=!scat5" type="checkbox" name="scat5">Maitrise operationnelle</button>
+            <!--><button class="btn btn-dark" (click)="scat6=!scat6" type="checkbox" name="scat6">s-cat 6</button>
+            <button class="btn btn-dark" (click)="scat7=!scat7" type="checkbox" name="scat7">s-cat 7</button>
+            <-->
+        </div>
+    </div>
+    <hr><br>
+    <div *ngFor="let file of files | async">
+        <div class="card  " *ngIf="check(file)">
+            <div class="card-header">
+                <button type="submit" class="btn btn-danger btn-sm" (click)="removeBox(file.id,file.url)"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-link btn-dark" [@myAnimation]='state' (click)="file.hide=!file.hide"> <i class="fa fa-eye " *ngIf="file.hide"></i> <i class="fa fa-eye-slash" *ngIf="!file.hide"></i>
+                </button>
+                <div class="wrapper">
+                    <h5>{{ file.title }} </h5>
+                </div>
+                <div class="wrapper">
+                    <h5>Categorie: </h5>{{file.category}}</div>
+                <div class="wrapper">
+                    <h5>sous-categorie: </h5>{{file.cat}}</div>
+
+            </div>
+            <div class="card-content" [hidden]="file.hide">
+                {{file.note}}
+                <a href="{{file.url}}" target="_blank" class="nav-link">telechargé {{this.file.title}} </a>
+
+            </div>
+            <br>
+        </div>
+
+
+    </div>
+
+</div>

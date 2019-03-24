@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark " role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+            &#9776;
+        </button>
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a routerLink="box" class="nav-link">upload</a></li>
+                <li class="nav-item"><a routerLink="signup" class="nav-link">signup</a></li>
+                <li class="nav-item"><a routerLink="admin" class="nav-link">admin</a></li>
+                <li class="nav-item"><a routerLink="profile" class="nav-link">profile</a></li>
+                <li class="nav-item"><a routerLink="fichiers" class="nav-link">fichiers</a></li>
+                <li class="nav-item"><a routerLink="Camera" class="nav-link">cam</a></li>
+            </ul>
+            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+
+                <li *ngIf="!authService.state" class="dropdown">
+                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle  ">Login </button>
+                    <div class="dropdown-menu dropdown-menu-right mt-1" id="dropdownMenu1">
+                        <div class="login dropdown-item">
+                            <form class="text-center" #f="ngForm" (submit)="login(f)">
+                                <div class="form-group text-center"> <label><h5>Nom D'utilisateur</h5></label>
+                                    <input type="email" [(ngModel)]="user.email" required name="email" class="form-control" placeholder="Entrez votre nom d'utilisateur">
+                                </div>
+                                <div class="form-group"> <label><h5>Mot De Passe</h5></label>
+                                    <input type="password" name="password" [(ngModel)]="user.mdp" required class="form-control" placeholder="mot de passe">
+                                </div>
+                                <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <li *ngIf="authService.user| async as user"> <button type="submit" (click)="logout()" class="btn  btn-danger"><i class="fa fa-sign-out"></i>Logout  </button> </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,59 @@
+<div class="container ">
+    <button type="button" class="btn btn-primary btn-block" (click)="toggleForm()">cliquez ici si vous n'avez pas deja un compte</button>
+
+    <form #f="ngForm" (ngSubmit)="signUp(f)" *ngIf="newUser">
+        <br>
+        <hr>
+        <h1 style="text-align: center;">INSCRIPTION </h1><span style="text-align: center;" class="form-text  ">Veuillez entrez vos informations pour completé votre inscription</span><br><br>
+        <div class=" row ">
+            <div class="col form-group" [ngClass]="{'has-error': prenom.invalid && prenom.touched,'has-success': prenom.valid && prenom.touched}">
+                <label>Prénom</label>
+                <input type="text" [(ngModel)]="user.prenom" #prenom="ngModel" required name="prenom" class="form-control" placeholder="Entrez votre prénom">
+                <span class="help-block text-muted" *ngIf="prenom.invalid && prenom.touched   ">Veuillez entrez prenom correctement</span>
+            </div>
+            <div class="col  form-group" [ngClass]="{'has-error': nom.invalid && nom.touched,'has-success': nom.valid && nom.touched}">
+                <label>Nom</label>
+                <input type="text" [(ngModel)]="user.nom" name="nom" #nom="ngModel" required class="form-control" placeholder="Entrez votre nom">
+                <span class="help-block text-muted " *ngIf="nom.invalid && nom.touched ">Veuillez entrez votre nom correctement</span>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <label>Email address</label>
+                <input type="email" [(ngModel)]="user.email" required name="email" class="form-control" placeholder="Enter email">
+                <small class="form-text text-muted">Votre adresse email sera necessaire pour se connecter</small>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" [(ngModel)]="user.mdp" required name="mdp" class="form-control" placeholder="Entrez votre mot de passe"><small class="form-text text-muted">6 caractaire minimum</small><br>
+
+                    <div class="form-group">
+                        <label>Confirmez votre mot de passe</label>
+                        <input type="password" class="form-control" required placeholder="Confirmez votre mot de passe">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <label>Entrez votre photo de profile</label>
+            <small class="form-text text-muted">Facultatif</small>
+
+
+            <br>
+            <input class="form-control-file" name="photo" type="file" (change)="uploadFile($event)">
+
+
+            <img src='{{this.user.url}}' class="rounded img-fluid ">
+
+        </div>
+        <br>
+        <hr>
+        <div class="text-center">
+            <button type="submit" [disabled]="!f.valid" class="btn btn-primary btn-lg btn-block ">Submit</button>
+        </div>
+    </form>
+</div>

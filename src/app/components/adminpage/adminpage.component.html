@@ -1,0 +1,58 @@
+<div class=" text-white   padded">
+    <div class="container" *ngFor="let user of users">
+        <div class="row">
+            <div class="col-md-4 col-xs-9 col-sm-6 col-lg-4">
+                <br><img src="{{user.url}}" style="width:200px;height:200px;border:2px;" alt="stack photo" class="img img-responsive">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid white ">
+                    <h2> {{user.prenom}} {{user.nom}}</h2>
+                </div>
+                <br><br>
+                <ul class="container details">
+                    <li>
+                        <p><span style="width:50px;"></span>Email :{{user.email}}</p>
+                    </li>
+                    <li>
+                        <p><span style="width:50px;"></span>Departement :{{user.dep}}</p>
+                    </li>
+                    <li>
+                        <p><span style="width:50px;"></span>Type :{{user.type}}</p>
+                    </li>
+
+                </ul>
+                <form (ngSubmit)="update(user)" *ngIf="up && usermodi.uid == user.uid ">
+
+
+                    <input type="text" [(ngModel)]="user.prenom" #prenom="ngModel" name="prenom" class="form-control" placeholder="Entrez le nouveau prenom">
+                    <hr>
+
+                    <input type="text" [(ngModel)]="user.nom" #nom="ngModel" name="nom" class="form-control" placeholder="Entrez le nouveau nom">
+                    <hr>
+
+                    <input type="text" [(ngModel)]="user.type" #type="ngModel" name="type" class="form-control" placeholder="Entrez le type : chef ou emp">
+                    <hr>
+
+                    <input type="text" [(ngModel)]="user.dep" #dep="ngModel" name="dep" class="form-control" placeholder="entrez son departement"><br>
+
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-success btn " value="Enregistrer">
+                        <button type="submit" (click)="anu()" class="btn btn btn ">Annuler</button>
+                        <button type="submit" class="btn btn-danger btn" (click)="removeUser(user)">Supprimer <i class="fa fa-trash"></i></button>
+                    </div>
+                </form>
+
+
+
+                <div class="container text-center">
+                    <br>
+
+                    <button type="submit" *ngIf="!up" class="btn btn-primary btn " (click)="modi($event, user)"><i class="fa fa-pencil"></i> modifier</button>
+
+                </div>
+
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

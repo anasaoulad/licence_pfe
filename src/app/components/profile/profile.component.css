@@ -1,0 +1,21 @@
+.details li {
+    list-style: none;
+    color: white;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.login {
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.0);
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}

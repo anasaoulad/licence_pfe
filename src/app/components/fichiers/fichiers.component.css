@@ -1,0 +1,29 @@
+.container {
+    margin: 0;
+    padding: 3rem;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.nav {
+    display: block;
+}
+
+.btn-group {
+    max-width: 100%;
+}
+
+.card-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 6fr 6fr;
+    grid-column-gap: 1em;
+    align-items: center;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+    align-items: center;
+}
